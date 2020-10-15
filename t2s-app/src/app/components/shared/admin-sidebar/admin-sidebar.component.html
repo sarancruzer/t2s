@@ -1,0 +1,31 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion login sidebar-admin" id="accordionSidebar" style="display: block;">
+
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="javascript:;">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">T2S </div>
+      </a>
+
+  <li class="nav-item active">
+     <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active" >
+     <i class="fas fa-fw fa-tachometer-alt"></i>
+     <span>Dashboard</span></a>
+ </li>
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+      <a class="nav-link" [routerLink]="['/stores']" routerLinkActive="active" >
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Stores</span></a>
+  </li>
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/customers']" routerLinkActive="active">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Customers</span>
+      </a>
+  </li>
+</ul>
+
+

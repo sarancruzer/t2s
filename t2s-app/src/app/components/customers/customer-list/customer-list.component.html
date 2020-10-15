@@ -1,0 +1,162 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <div class="col-md-2 offset-md-10 pb-3">
+        <a href="javascript:;" class="btn btn-primary " (click)="openCreateCustomerModal()">
+        <i class="fa fa-plus"></i> Create Customer
+        </a>
+    </div>
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">       
+      <div class="card-header py-3">      
+
+        <!-- <form class="navbar-form"> -->
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="customerName" (keyup)="searchEvent($event)">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="button" (click)="getCustomerList()"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <!-- </form> -->
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Customer Name</th>
+                <th>Eamil</th>
+                <th>Mobile Number</th>
+                <th>store Name</th>
+              </tr>
+            </thead>           
+            <tbody>
+              <tr *ngFor="let item of customerList">
+                <td>{{item.id}}</td>
+                <td>{{item.firstName}} {{item.firstName}}</td>                
+                <td>{{item.email}} </td>                
+                <td>{{item.mobileNumber}} </td>  
+                <td>{{item.stores?.storeName}} </td>                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container-fluid -->
+
+
+
+  
+<div bsModal #createCustomerModal="bs-modal" class="modal fade" tabindex="-1"
+role="dialog" aria-labelledby="dialog-sizes-name1" [config]="{backdrop: 'static'}">
+<div class="modal-dialog modal-md">
+<div class="modal-content">
+ <div class="modal-header">
+   <h4 id="dialog-sizes-name1" class="modal-title pull-left homework-tit">Create Customer</h4>
+   <button type="button" class="close pull-right" (click)="createCustomerModal.hide()" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+ <div class="modal-body">
+   <div class="col-lg-12">
+        
+
+     <form class="user" [formGroup]="createCustomerForm">
+       <div class="row">
+           <div class="col-md-6">
+               <div class="form-group">
+                   <input type="text" class="form-control form-control-user" aria-describedby="" placeholder="First Name" formControlName="firstName" >
+
+                   <div *ngIf="createCustomerForm.controls['firstName'].invalid && (createCustomerForm.controls['firstName'].dirty || submitAttempt)" class="err">
+                     <p *ngIf="createCustomerForm.controls['firstName'].errors.required">
+                        firstName is required.
+                     </p>
+                 </div>
+                   
+               </div>
+           </div>
+           <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user" aria-describedby="" placeholder="lastName" formControlName="lastName">
+
+                <div *ngIf="createCustomerForm.controls['lastName'].invalid && (createCustomerForm.controls['lastName'].dirty || submitAttempt)" class="err">
+                  <p *ngIf="createCustomerForm.controls['lastName'].errors.required">
+                     lastName is required.
+                  </p>
+              </div>
+            </div>
+        </div>
+       </div>
+       
+       <div class="row">
+           <div class="col-md-12">
+               <div class="form-group">
+                   <input type="text" class="form-control form-control-user" placeholder="Email" formControlName="email">
+
+                   <div *ngIf="createCustomerForm.controls['email'].invalid && (createCustomerForm.controls['email'].dirty || submitAttempt)" class="err">
+                     <p *ngIf="createCustomerForm.controls['email'].errors.required">
+                        email is required.
+                     </p>
+                 </div>
+
+               </div>
+           </div>
+        </div>
+
+        <div class="row">
+           <div class="col-md-12">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-user" aria-describedby="" placeholder="mobileNumber" formControlName="mobileNumber">
+
+                <div *ngIf="createCustomerForm.controls['mobileNumber'].invalid && (createCustomerForm.controls['mobileNumber'].dirty || submitAttempt)" class="err">
+                  <p *ngIf="createCustomerForm.controls['mobileNumber'].errors.required">
+                    mobileNumber is required.
+                  </p>
+              </div>
+            </div>
+        </div>
+       </div>
+
+       <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <select class="form-control" formControlName="store">
+                    <option *ngFor="let item of storeList" value="{{item.id}}">{{item.storeName}}</option>
+                </select>
+    
+                <div *ngIf="createCustomerForm.controls['store'].invalid && (createCustomerForm.controls['store'].dirty || submitAttempt)"
+                    class="err">
+                    <p *ngIf="createCustomerForm.controls['store'].errors.required">
+                        store is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   </form>
+
+       
+
+         <div class="row right-men-top-sty">
+           <div class="col-md-4 offset-md-4">
+             <div class="text-left">
+               <a href="javascript:;" class="btn btn-facebook btn-user btn-block" (click)="createCustomer()">
+                  Submit</a>
+             </div>
+           </div>
+         </div>
+
+     </div>
+
+ </div>
+</div>
+</div>
+</div>

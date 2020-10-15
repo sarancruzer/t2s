@@ -1,0 +1,39 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        
+      <div class="card-header py-3">
+
+        <!-- <form class="navbar-form"> -->
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="storeName" (keyup)="searchStoreEvent($event)">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="button" (click)="getStoreList()"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <!-- </form> -->
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Store Name</th>
+              </tr>
+            </thead>           
+            <tbody>
+              <tr *ngFor="let item of storeList">
+                <td>{{item.id}}</td>
+                <td>{{item.storeName}}</td>                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container-fluid -->
